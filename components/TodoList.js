@@ -1,18 +1,26 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Todo from "./Todo";
-import { todoList } from "../data/todolist";
+import {connect} from 'react-redux'
+// import store from "../reduxStore/store";
 
-
-export default class ToDoList extends React.Component{
+class ToDoList extends React.Component{
 
     render(){
+
+        // const todo = store.getState().todos
      return(
         <View>
-            {todoList.map((todo, index)=><Todo key={index} todo={todo}/>)}
+            {this.props.todos.map((todo, index)=><Todo key={index} todo={todo}/>)}
         </View> 
     )
     }
 }
+
+const mapStateToProps = (state) =>({
+    todos: state.todos
+})
+
+export default connect(mapStateToProps)(ToDoList)
 
 

@@ -4,11 +4,12 @@ import  { StyleSheet, Text, View, Button } from 'react-native';
 import React from 'react';
 import { NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator, } from '@react-navigation/native-stack'
-
-
+import {Provider} from 'react-redux'
+import store from './reduxStore/store';
 import HomeScreen from './components/HomeScreen';
 import TodoForm from './components/TodoForm';
 import LoginScreen from './components/LoginScreen';
+
 
 
 
@@ -27,8 +28,9 @@ export default class App extends React.Component{
   render(){
     return (
 
-      
+      <Provider store={store}>
       <View style={styles.container}>
+        
         <NavigationContainer>
         { this.state.token ? (
           <Main.Navigator initialRouteName='Home'>
@@ -45,6 +47,7 @@ export default class App extends React.Component{
         </NavigationContainer>
         
       </View>
+      </Provider>
     );
 
   }
