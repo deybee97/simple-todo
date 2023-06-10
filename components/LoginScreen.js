@@ -1,10 +1,12 @@
 import React from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import loginApi from "../api/login";
+import { connect } from "react-redux";
+import { loginUser } from "../reduxStore/actions";
 
 
 
-export default class LoginScreen extends React.Component {
+class LoginScreen extends React.Component {
 
     state ={
         email: "",
@@ -12,11 +14,12 @@ export default class LoginScreen extends React.Component {
     }
 
     handleLogin = async () => {
-        const {login} = this.props.route.params
+      //   const {login} = this.props.route.params
 
-       const token = await loginApi(this.state.email, this.state.password)
+      //  const token = await loginApi(this.state.email, this.state.password)
 
-       login(token)
+      //  login(token)
+      this.props.loginUser(this.state.email, this.state.password)
         
     }
 
@@ -58,6 +61,9 @@ export default class LoginScreen extends React.Component {
      
     }
 }
+
+
+export default connect(null,{loginUser:loginUser})(LoginScreen)
 
 
 const styles = StyleSheet.create({
