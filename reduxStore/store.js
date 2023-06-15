@@ -5,6 +5,21 @@ import { todoAction, userAction} from './actions'
 
 import reducer from './reducer'
 
+
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+ 
+
+ 
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+ 
+const persistedReducer = persistReducer(persistConfig, reducer)
+ 
+
+
 const thunk = store => next => action => {
     if(typeof(action) === 'function'){
         action(store.dispatch)
@@ -13,10 +28,13 @@ const thunk = store => next => action => {
     }
 }
 
-const store = createStore(reducer, applyMiddleware(thunk))
+export const store = createStore(persistedReducer, applyMiddleware(thunk))
 
-store.dispatch(userAction({username: 'Adebola', previlege: 'Admin'}))
-store.dispatch(todoAction('do this'))
-store.dispatch(todoAction('do that'))
+export let persistor = persistStore(store)
 
-export default store
+
+// store.dispatch(userAction({username: 'Adebola', previlege: 'Admin'}))
+// store.dispatch(todoAction('do this'))
+// store.dispatch(todoAction('do that'))
+
+// export default store

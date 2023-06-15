@@ -38,6 +38,7 @@ class LoginScreen extends React.Component {
         return(
             <View style={styles.container}>
         <Text style={styles.title}>Login</Text>
+        <Text>{this.props.err}</Text>
         <TextInput
           style={styles.input}
           placeholder="Email"
@@ -61,9 +62,12 @@ class LoginScreen extends React.Component {
      
     }
 }
+const mapStateToProps = (state) => ({
+  err: state.user.errMsg
+})
 
 
-export default connect(null,{loginUser:loginUser})(LoginScreen)
+export default connect(mapStateToProps,{loginUser:loginUser})(LoginScreen)
 
 
 const styles = StyleSheet.create({

@@ -22,8 +22,8 @@ export const userAction = (update) => ({
 export const loginUser = (email, password) => dispatch  => {
 
     dispatch({type: LOG_IN_SENT})
-
-    login(email, password).then((token)=> dispatch({type:LOG_IN_FULFILLED, payload:{token}})).catch((e)=> dispatch({type:LOG_IN_REJECTED}))
+    login(email, password).then((token)=> dispatch({type:LOG_IN_FULFILLED, payload:{token}})).catch((e)=> {
+        dispatch({type:LOG_IN_REJECTED, payload:{errMsg: e.response.data.msg}})})
     
 } 
 

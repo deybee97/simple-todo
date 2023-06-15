@@ -8,7 +8,7 @@ class TodoForm extends React.Component{
 
 
     state = {
-        todo: ""
+         todo: ""
     }
 
     handleChange = (text) => {

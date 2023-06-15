@@ -19,6 +19,7 @@ const userReducer = (state={}, action) => {
     switch(action.type){
         case UPDATE_USER: return { ...state, ...action.payload}
         case LOG_IN_FULFILLED: return {...state, ...action.payload}
+        case LOG_IN_REJECTED: return {...state, ...action.payload}
         default: return state
     }
 }
