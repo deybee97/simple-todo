@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`login user returns action dispatches LOG_IN_FULFILLED 1`] = `
+[
+  {
+    "payload": {
+      "token": "thisisatesttoken",
+    },
+    "type": "LOG_IN_FULFILLED",
+  },
+]
+`;
+
+exports[`should return an action 1`] = `
+{
+  "payload": "do this",
+  "type": "UPDATE_TODO",
+}
+`;
+
+exports[`should return an action should handle empty name 1`] = `
+{
+  "payload": {
+    "name": "",
+  },
+  "type": "UPDATE_USER",
+}
+`;
+
+exports[`should return an action should handle empty object 1`] = `
+{
+  "payload": {},
+  "type": "UPDATE_USER",
+}
+`;
+
+exports[`should return an action should hangle empty object 1`] = `
+{
+  "payload": {},
+  "type": "UPDATE_USER",
+}
+`;
+
+exports[`should return an action should return an action 1`] = `
+{
+  "payload": {
+    "userId": "12345609",
+  },
+  "type": "UPDATE_USER",
+}
+`;

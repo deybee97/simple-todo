@@ -21,8 +21,8 @@ export default class App extends React.Component{
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Nav/>
-       </PersistGate>
-       </Provider>
+        </PersistGate>
+        </Provider>
     );
 
   }

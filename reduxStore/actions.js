@@ -11,7 +11,8 @@ export const LOG_IN_REJECTED = 'LOG_IN_REJECTED'
 
 export const todoAction = (update) => ({
     type: UPDATE_TODO,
-    payload: update
+    payload: update,
+  
 })
 
 export const userAction = (update) => ({
@@ -19,11 +20,13 @@ export const userAction = (update) => ({
     payload: update
 })
 
-export const loginUser = (email, password) => dispatch  => {
+export const loginUser = (email, password,loginFn = login) => dispatch  => {
 
     dispatch({type: LOG_IN_SENT})
-    login(email, password).then((token)=> dispatch({type:LOG_IN_FULFILLED, payload:{token}})).catch((e)=> {
-        dispatch({type:LOG_IN_REJECTED, payload:{errMsg: e.response.data.msg}})})
+    loginFn(email, password).then((token)=> dispatch({type:LOG_IN_FULFILLED, payload:{token}})).catch((e)=> {
+       
+        dispatch({type:LOG_IN_REJECTED, payload:{errMsg: e}})
+    })
     
 } 
 
