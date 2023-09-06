@@ -20,13 +20,18 @@ export const userAction = (update) => ({
     payload: update
 })
 
-export const loginUser = (email, password,loginFn = login) => dispatch  => {
+export const loginUser =  (email, password, loginFn = login) => async (dispatch)  => {
 
     dispatch({type: LOG_IN_SENT})
-    loginFn(email, password).then((token)=> dispatch({type:LOG_IN_FULFILLED, payload:{token}})).catch((e)=> {
-       
-        dispatch({type:LOG_IN_REJECTED, payload:{errMsg: e}})
-    })
+    try {
+
+      const token =  await loginFn(email, password)
+        dispatch({type:LOG_IN_FULFILLED, payload:{token}})
+
+    } catch (e) {
+        dispatch({type:LOG_IN_REJECTED, payload:{errMsg: e.message}})
+    }
+    
     
 } 
 

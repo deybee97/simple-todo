@@ -23,13 +23,13 @@ test('should return an action', () => {
 
 describe('login user returns action', ()=>{
 
-    const mocLogin = async (email,password)=> {
+    const mocLogin = async  (email,password)=> {
             
         if(email === "username" && password === "password"){
             return "thisisatesttoken"
-        }else{
-            throw new Error("credentials incorrect")
         }
+        throw new Error("credentials incorrect")
+        
     }
 
     it('dispatches LOG_IN_SENT',    async()=>{

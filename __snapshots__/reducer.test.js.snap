@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`contect reducer sucessfully add new todo 1`] = `
+{
+  "todos": [
+    "do this",
+  ],
+  "user": {},
+}
+`;
+
+exports[`contect reducer sucessfully update user object 1`] = `
+{
+  "todos": [],
+  "user": {
+    "token": "otARealToken",
+  },
+}
+`;

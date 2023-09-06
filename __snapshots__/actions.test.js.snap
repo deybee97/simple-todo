@@ -11,6 +11,17 @@ exports[`login user returns action dispatches LOG_IN_FULFILLED 1`] = `
 ]
 `;
 
+exports[`login user returns action dispatches LOG_IN_REJECTED 1`] = `
+[
+  {
+    "payload": {
+      "errMsg": "credentials incorrect",
+    },
+    "type": "LOG_IN_REJECTED",
+  },
+]
+`;
+
 exports[`should return an action 1`] = `
 {
   "payload": "do this",
@@ -28,13 +39,6 @@ exports[`should return an action should handle empty name 1`] = `
 `;
 
 exports[`should return an action should handle empty object 1`] = `
-{
-  "payload": {},
-  "type": "UPDATE_USER",
-}
-`;
-
-exports[`should return an action should hangle empty object 1`] = `
 {
   "payload": {},
   "type": "UPDATE_USER",
